@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi-MG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #fdd835;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .calculator {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .calculator input, .calculator select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .calculator button {
+            background-color: #fdd835;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Willkommen bei Taxi-MG</h1>
+    </header>
+    <div class="container">
+        <div class="calculator">
+            <h2>Fahrpreis berechnen</h2>
+            <form id="priceForm">
+                <label for="start">Start:</label>
+                <input type="text" id="start" name="start" placeholder="Z.B. Luisenstr 24, Düsseldorf" required>
+
+                <label for="ziel">Ziel:</label>
+                <input type="text" id="ziel" name="ziel" placeholder="Z.B. Flughafen Düsseldorf" required>
+
+                <label for="personen">Erwachsene:</label>
+                <select id="personen" name="personen">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+
+                <button type="button" onclick="berechnePreis()">Fahrpreis berechnen</button>
+            </form>
+            <p id="preisAnzeige"></p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Taxi-MG</p>
+    </footer>
+
+    <script>
+        function berechnePreis() {
+            // Beispiel einer einfachen Preisberechnung basierend auf Entfernung (manuell festgelegt für dieses Beispiel)
+            let personen = document.getElementById("personen").value;
+            let basisPreis = 30; // fester Basispreis
+            let zuschlagProPerson = 10; // Zuschlag für jede zusätzliche Person
+            let endPreis = basisPreis + (personen - 1) * zuschlagProPerson;
+
+            document.getElementById("preisAnzeige").innerText = "Der berechnete Fahrpreis beträgt " + endPreis + "€.";
+        }
+    </script>
+</body>
+</html>
